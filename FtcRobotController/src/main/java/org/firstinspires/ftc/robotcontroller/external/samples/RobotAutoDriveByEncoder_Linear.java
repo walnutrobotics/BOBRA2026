@@ -156,7 +156,7 @@ public class RobotAutoDriveByEncoder_Linear extends LinearOpMode {
             leftDrive.setPower(Math.abs(speed));
             rightDrive.setPower(Math.abs(speed));
 
-            // keep looping while we are still active, and there is time left, and both motors are running.
+            // keep looping while we are still 'active, and there is time left, and both motors are running.
             // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
             // its target position, the motion will stop.  This is "safer" in the event that the robot will
             // always end the motion as soon as possible.
