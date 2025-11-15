@@ -9,18 +9,15 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name  = "teleop1", group = "1")
 public class Teleop extends LinearOpMode {
+
     DcMotor r1;
     DcMotor r2;
     DcMotor l1;
     DcMotor l2;
-    DcMotor accelerator1;;
-
-    DcMotor accelerator2;
-    CRServo topleft;
-    CRServo topright;
-    CRServo bottomleft;
-    CRServo bottomright;
+    DcMotor catapultL;
+    DcMotor catapultR;
     double SpeedMultiplier = 0.75;
+
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -29,12 +26,10 @@ public class Teleop extends LinearOpMode {
         r2 = hardwareMap.get(DcMotor.class,"r2");
         l1 = hardwareMap.get(DcMotor.class,"l1");
         l2 = hardwareMap.get(DcMotor.class,"l2");
-        accelerator1 = hardwareMap.get(DcMotor.class, "accelerator1");
-        accelerator2 = hardwareMap.get(DcMotor.class, "accelerator2");
-        topright = hardwareMap.get(CRServo.class,"topright");
-        topleft = hardwareMap.get(CRServo.class, "topleft");
-        topleft = hardwareMap.get(CRServo.class, "bottomleft");
-        topleft = hardwareMap.get(CRServo.class, "bottomright");
+
+        catapultL = hardwareMap.get(DcMotor.class, "catapultL");
+
+        catapultR = hardwareMap.get(DcMotor.class, "catapultR");
 
         waitForStart();
         while(!isStopRequested()) {
@@ -42,10 +37,10 @@ public class Teleop extends LinearOpMode {
             r1.setDirection(DcMotorSimple.Direction.REVERSE);
             r2.setDirection(DcMotorSimple.Direction.REVERSE);
             if (gamepad1.dpad_down) {
-                r1.setPower(1);
-                r2.setPower(1);
-                l1.setPower(0.75);
-                l2.setPower(0.75);
+                r1.setPower(-1);
+                r2.setPower(-1);
+                l1.setPower(1);
+                l2.setPower(-1);
             } else if (!gamepad1.dpad_down) {
                 r1.setPower(0);
                 r2.setPower(0);
@@ -53,12 +48,12 @@ public class Teleop extends LinearOpMode {
                 l2.setPower(0);
             }
 
-            //right turn
+            //forward
             if (gamepad1.dpad_up) {
-                r1.setPower(-1);
-                r2.setPower(-1);
-                l1.setPower(-0.75);
-                l2.setPower(-0.75);
+                r1.setPower(1);
+                r2.setPower(1);
+                l1.setPower(-1);
+                l2.setPower(1);
             }
             else if (!gamepad1.dpad_up) {
                 r1.setPower(0);
@@ -70,7 +65,7 @@ public class Teleop extends LinearOpMode {
             if (gamepad1.dpad_left) {
                 r1.setPower(-1);
                 r2.setPower(-1);
-                l1.setPower(1);
+                l1.setPower(-1);
                 l2.setPower(1);
             } else if (!gamepad1.dpad_left) {
                 r1.setPower(0);
@@ -82,7 +77,7 @@ public class Teleop extends LinearOpMode {
             if (gamepad1.dpad_right) {
                 r1.setPower(1);
                 r2.setPower(1);
-                l1.setPower(-1);
+                l1.setPower(1);
                 l2.setPower(-1);
             } else if (!gamepad1.dpad_right) {
                 r1.setPower(0);
@@ -94,18 +89,27 @@ public class Teleop extends LinearOpMode {
             //Turn Right
             if (gamepad1.right_trigger > 0.5) {
                 r1.setPower(-1);
-                r2.setPower(-1);
-                l1.setPower(1);
+                r2.setPower(1);
+                l1.setPower(-1);
                 l2.setPower(1);
             }
 
             //Turn Left
             if (gamepad1.left_trigger > 0.5) {
-                l1.setPower(-1);
+                l1.setPower(1);
                 l2.setPower(-1);
                 r1.setPower(1);
                 r2.setPower(1);
 
+            }
+            //Push Ball Up
+
+            if (gamepad2.a) {
+                catapultR.setPower(1);
+                catapultL.setPower(-1);
+            } else {
+                catapultR.setPower(0);
+                catapultL.setPower(0);
             }
         }
     }
