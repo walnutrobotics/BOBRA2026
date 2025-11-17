@@ -14,8 +14,7 @@ public class Teleop extends LinearOpMode {
     DcMotor r2;
     DcMotor l1;
     DcMotor l2;
-    DcMotor catapultL;
-    DcMotor catapultR;
+    DcMotor intake;
     double SpeedMultiplier = 0.75;
 
 
@@ -27,21 +26,19 @@ public class Teleop extends LinearOpMode {
         l1 = hardwareMap.get(DcMotor.class,"l1");
         l2 = hardwareMap.get(DcMotor.class,"l2");
 
-        catapultL = hardwareMap.get(DcMotor.class, "catapultL");
-
-        catapultR = hardwareMap.get(DcMotor.class, "catapultR");
+        intake = hardwareMap.get(DcMotor.class,"intake");
 
         waitForStart();
         while(!isStopRequested()) {
             //drive code forward and back
             r1.setDirection(DcMotorSimple.Direction.REVERSE);
             r2.setDirection(DcMotorSimple.Direction.REVERSE);
-            if (gamepad1.dpad_down) {
+            if (gamepad1.dpad_up) {
                 r1.setPower(-1);
                 r2.setPower(-1);
                 l1.setPower(1);
                 l2.setPower(-1);
-            } else if (!gamepad1.dpad_down) {
+            } else if (!gamepad1.dpad_up) {
                 r1.setPower(0);
                 r2.setPower(0);
                 l1.setPower(0);
@@ -49,37 +46,37 @@ public class Teleop extends LinearOpMode {
             }
 
             //forward
-            if (gamepad1.dpad_up) {
+            if (gamepad1.dpad_down) {
                 r1.setPower(1);
                 r2.setPower(1);
                 l1.setPower(-1);
                 l2.setPower(1);
             }
-            else if (!gamepad1.dpad_up) {
+            else if (!gamepad1.dpad_down) {
                 r1.setPower(0);
                 r2.setPower(0);
                 l1.setPower(0);
                 l2.setPower(0);
             }
             //left turn
-            if (gamepad1.dpad_left) {
-                r1.setPower(-1);
-                r2.setPower(-1);
-                l1.setPower(-1);
-                l2.setPower(1);
-            } else if (!gamepad1.dpad_left) {
-                r1.setPower(0);
-                r2.setPower(0);
-                l1.setPower(0);
-                l2.setPower(0);
-            }
-
             if (gamepad1.dpad_right) {
                 r1.setPower(1);
                 r2.setPower(1);
                 l1.setPower(1);
                 l2.setPower(-1);
             } else if (!gamepad1.dpad_right) {
+                r1.setPower(0);
+                r2.setPower(0);
+                l1.setPower(0);
+                l2.setPower(0);
+            }
+
+            if (gamepad1.dpad_left) {
+                r1.setPower(-1);
+                r2.setPower(-1);
+                l1.setPower(-1);
+                l2.setPower(1);
+            } else if (!gamepad1.dpad_left) {
                 r1.setPower(0);
                 r2.setPower(0);
                 l1.setPower(0);
@@ -102,15 +99,11 @@ public class Teleop extends LinearOpMode {
                 r2.setPower(1);
 
             }
-            //Push Ball Up
+            //Push Ball In
+            if (gamepad2.left_trigger > 0.5) {
+                intake.setPower(1);
+            }
 
-            if (gamepad2.a) {
-                catapultR.setPower(1);
-                catapultL.setPower(-1);
-            } else {
-                catapultR.setPower(0);
-                catapultL.setPower(0);
             }
         }
     }
-}
