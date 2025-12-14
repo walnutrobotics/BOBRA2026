@@ -93,7 +93,7 @@ public class Teleop extends LinearOpMode {
                 r1.setPower(0);
                 r2.setPower(0);
                 l1.setPower(0);
-                l2.setPower(0);
+                l2.setPower(-0);
             }
 
             //Turn Right
