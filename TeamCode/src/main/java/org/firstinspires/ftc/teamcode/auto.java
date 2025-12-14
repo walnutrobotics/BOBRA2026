@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "autoright", group = "1")
-public class autoright extends LinearOpMode {
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "AtulPrabhuBrown", group = "1")
+public class auto extends LinearOpMode {
     public DcMotor r1 = null;
     public DcMotor r2 = null;
     public DcMotor l1 = null;
@@ -19,15 +19,15 @@ public class autoright extends LinearOpMode {
         waitForStart();
 
         if (opModeIsActive()) {
-            moveright(0.5,7000);
+            move(0.5,1000);
 
         }
     }
-    public void moveright(double power, long time) {
-        r1.setPower(power);
-        r2.setPower(-power);
-        l1.setPower(-power);
-        l2.setPower(-power);
+    public void move(double power, long time) {
+        r1.setPower(-1);
+        r2.setPower(-1);
+        l1.setPower(1);
+        l2.setPower(-1);
 
         sleep(time);
     }
