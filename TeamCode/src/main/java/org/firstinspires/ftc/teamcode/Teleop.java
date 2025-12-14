@@ -46,7 +46,7 @@ public class Teleop extends LinearOpMode {
             //drive code forward and back
             r1.setDirection(DcMotorSimple.Direction.REVERSE);
             r2.setDirection(DcMotorSimple.Direction.REVERSE);
-            if (gamepad1.left_stick_y>0) {
+            if (gamepad1.left_stick_y>0.5) {
                 r1.setPower(gamepad1.left_stick_y);
                 r2.setPower(gamepad1.left_stick_y);
                 l1.setPower(-gamepad1.left_stick_y);
@@ -59,7 +59,7 @@ public class Teleop extends LinearOpMode {
             }
 
             //forward
-            if (gamepad1.left_stick_y<0) {
+            if (gamepad1.left_stick_y<0.5) {
                 r1.setPower(-gamepad1.left_stick_y);
                 r2.setPower(-gamepad1.left_stick_y);
                 l1.setPower(gamepad1.left_stick_y);
@@ -72,7 +72,7 @@ public class Teleop extends LinearOpMode {
                 l2.setPower(0);
             }
             //left turn
-            if (gamepad1.left_stick_x>0) {
+            if (gamepad1.left_stick_x>0.5) {
                 r1.setPower(-gamepad1.left_stick_x);
                 r2.setPower(-gamepad1.left_stick_x);
                 l1.setPower(-gamepad1.left_stick_x);
@@ -84,7 +84,7 @@ public class Teleop extends LinearOpMode {
                 l2.setPower(0);
             }
 
-            if (gamepad1.left_stick_x<0) {
+            if (gamepad1.left_stick_x<0.5) {
                 r1.setPower(gamepad1.left_stick_x);
                 r2.setPower(gamepad1.left_stick_x);
                 l1.setPower(gamepad1.left_stick_x);
