@@ -95,7 +95,7 @@ public class Teleop extends LinearOpMode {
                 l2.setPower(-0);
             }
 
-            //Push Ball In
+            //Push Ball Inside
             if (gamepad2.right_bumper) {
                 intake.setPower(1);
             } else {
