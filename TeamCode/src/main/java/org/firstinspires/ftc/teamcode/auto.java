@@ -19,13 +19,13 @@ public class auto extends LinearOpMode {
         waitForStart();
 
         if (opModeIsActive()) {
-            move(0.5,1000);
+            move(1.0,1000);
 
         }
     }
     public void move(double power, long time) {
-        r1.setPower(-1);
-        r2.setPower(-1);
+        r1.setPower(1);
+        r2.setPower(1);
         l1.setPower(1);
         l2.setPower(-1);
 
