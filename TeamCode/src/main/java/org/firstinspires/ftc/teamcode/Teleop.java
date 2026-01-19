@@ -32,7 +32,7 @@ public class Teleop extends LinearOpMode {
 
         intake = hardwareMap.get(DcMotor.class,"intake");
 
-        gear = hardwareMap.get(DcMotor.class,"CatL");
+        gear = hardwareMap.get(DcMotor.class,"gear");
 
 
 
@@ -112,6 +112,12 @@ public class Teleop extends LinearOpMode {
             } else {
                 gear.setPower(0);
             }
+            if (gamepad2.right_trigger > 0.5) {
+                gear.setPower(0.2);
+            } else {
+                gear.setPower(0);
+            }
+
             //pull back!
 
         }
