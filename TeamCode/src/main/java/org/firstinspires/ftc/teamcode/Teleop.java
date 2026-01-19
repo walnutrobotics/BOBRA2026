@@ -113,10 +113,16 @@ public class Teleop extends LinearOpMode {
                 gear.setPower(0);
             }
             if (gamepad2.right_trigger > 0.5) {
+                gear.setPower(-1);
+            } else {
+                gear.setPower(0);
+            }
+            if (gamepad2.a) {
                 gear.setPower(0.2);
             } else {
                 gear.setPower(0);
             }
+
 
             //pull back!
 
