@@ -46,9 +46,9 @@ public class Teleop extends LinearOpMode {
             //backward
             if (gamepad1.dpad_down) {
                 r1.setPower(1);
-                r2.setPower(1);
+                r2.setPower(-1);
                 l1.setPower(-1);
-                l2.setPower(1);
+                l2.setPower(-1);
             } else {
                 r1.setPower(0);
                 r2.setPower(0);
@@ -59,9 +59,9 @@ public class Teleop extends LinearOpMode {
             //forward
             if (gamepad1.dpad_up) {
                 r1.setPower(-1);
-                r2.setPower(-1);
+                r2.setPower(1);
                 l1.setPower(1);
-                l2.setPower(-1);
+                l2.setPower(1);
             }
             else {
                 r1.setPower(0);
@@ -72,9 +72,9 @@ public class Teleop extends LinearOpMode {
             //left turn
             if (gamepad1.dpad_left) {
                 r1.setPower(-1);
-                r2.setPower(-1);
+                r2.setPower(1);
                 l1.setPower(-1);
-                l2.setPower(1);
+                l2.setPower(-1);
             } else {
                 r1.setPower(0);
                 r2.setPower(0);
@@ -84,9 +84,9 @@ public class Teleop extends LinearOpMode {
             //right turn
             if (gamepad1.dpad_right) {
                 r1.setPower(1);
-                r2.setPower(1);
+                r2.setPower(-1);
                 l1.setPower(1);
-                l2.setPower(-1);
+                l2.setPower(1);
             } else {
                 r1.setPower(0);
                 r2.setPower(0);
