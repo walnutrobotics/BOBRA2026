@@ -34,12 +34,16 @@ public class Teleop extends LinearOpMode {
 
         gear = hardwareMap.get(DcMotor.class,"gear");
 
+
+
+
+
         waitForStart();
         while(!isStopRequested()) {
             //drive code forward and back
             r1.setDirection(DcMotorSimple.Direction.REVERSE);
             r2.setDirection(DcMotorSimple.Direction.REVERSE);
-            //backward
+            //backward dpad
             if (gamepad1.dpad_down) {
                 r1.setPower(1);
                 r2.setPower(-1);
@@ -51,8 +55,20 @@ public class Teleop extends LinearOpMode {
                 l1.setPower(0);
                 l2.setPower(0);
             }
+            //backward joystick
+            if (gamepad1.left_stick_y<0) {
+                r1.setPower(1);
+                r2.setPower(-1);
+                l1.setPower(-1);
+                l2.setPower(-1);
+            } else {
+                r1.setPower(0);
+                r2.setPower(0);
+                l1.setPower(0);
+                l2.setPower(0);
+            }
 
-            //forward
+            //forward dpad
             if (gamepad1.dpad_up) {
                 r1.setPower(-1);
                 r2.setPower(1);
@@ -65,8 +81,22 @@ public class Teleop extends LinearOpMode {
                 l1.setPower(0);
                 l2.setPower(0);
             }
-            //left turn
-            if (gamepad1.dpad_left) {
+            //forward joystick
+            if (gamepad1.left_stick_y>0) {
+                r1.setPower(-1);
+                r2.setPower(1);
+                l1.setPower(1);
+                l2.setPower(1);
+            }
+            else {
+                r1.setPower(0);
+                r2.setPower(0);
+                l1.setPower(0);
+                l2.setPower(0);
+            }
+
+            //left turn joystick
+            if (gamepad1.left_stick_x<0) {
                 r1.setPower(-1);
                 r2.setPower(1);
                 l1.setPower(-1);
@@ -77,8 +107,20 @@ public class Teleop extends LinearOpMode {
                 l1.setPower(0);
                 l2.setPower(0);
             }
-            //right turn
+            //right turn dpad
             if (gamepad1.dpad_right) {
+                r1.setPower(1);
+                r2.setPower(-1);
+                l1.setPower(1);
+                l2.setPower(1);
+            } else {
+                r1.setPower(0);
+                r2.setPower(0);
+                l1.setPower(0);
+                l2.setPower(-0);
+            }
+            //right turn joystick
+            if (gamepad1.left_stick_x>0) {
                 r1.setPower(1);
                 r2.setPower(-1);
                 l1.setPower(1);
@@ -106,7 +148,6 @@ public class Teleop extends LinearOpMode {
             if (gamepad2.left_trigger>0.5) {
                 gear.setPower(1);
             } else {
-                gear.setPower(0);
                 gear.setPower(0);
             }
             if (gamepad2.right_trigger > 0.5) {
