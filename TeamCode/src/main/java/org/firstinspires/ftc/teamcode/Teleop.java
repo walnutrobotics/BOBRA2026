@@ -17,6 +17,7 @@ public class Teleop extends LinearOpMode {
     DcMotor intake;
 
     DcMotor gear;
+    DcMotor gear2;
 
 
     double SpeedMultiplier = 0.75;
@@ -33,6 +34,8 @@ public class Teleop extends LinearOpMode {
         intake = hardwareMap.get(DcMotor.class,"intake");
 
         gear = hardwareMap.get(DcMotor.class,"gear");
+
+        gear2 = hardwareMap.get(DcMotor.class,"gear2");
 
 
 
@@ -71,10 +74,10 @@ public class Teleop extends LinearOpMode {
             }
             //left turn
             if (gamepad1.dpad_left) {
-                r1.setPower(-1);
-                r2.setPower(1);
-                l1.setPower(-1);
-                l2.setPower(-1);
+                r1.setPower(-0.5);
+                r2.setPower(0.5);
+                l1.setPower(-0.5);
+                l2.setPower(-0.5);
             } else {
                 r1.setPower(0);
                 r2.setPower(0);
@@ -83,10 +86,10 @@ public class Teleop extends LinearOpMode {
             }
             //right turn
             if (gamepad1.dpad_right) {
-                r1.setPower(1);
-                r2.setPower(-1);
-                l1.setPower(1);
-                l2.setPower(1);
+                r1.setPower(0.5);
+                r2.setPower(-0.5);
+                l1.setPower(0.5);
+                l2.setPower(0.5);
             } else {
                 r1.setPower(0);
                 r2.setPower(0);
@@ -109,13 +112,18 @@ public class Teleop extends LinearOpMode {
             //launch!
             if (gamepad2.left_trigger>0.5) {
                 gear.setPower(1);
+                gear2.setPower(-1);
             } else {
                 gear.setPower(0);
+                gear2.setPower(0);
+
             }
             if (gamepad2.right_trigger > 0.5) {
                 gear.setPower(-1);
+                gear2.setPower(1);
             } else {
                 gear.setPower(0);
+                gear2.setPower(0);
             }
             if (gamepad2.a) {
                 gear.setPower(0.2);
