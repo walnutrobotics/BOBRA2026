@@ -34,10 +34,6 @@ public class Teleop extends LinearOpMode {
 
         gear = hardwareMap.get(DcMotor.class,"gear");
 
-
-
-
-
         waitForStart();
         while(!isStopRequested()) {
             //drive code forward and back
@@ -110,6 +106,7 @@ public class Teleop extends LinearOpMode {
             if (gamepad2.left_trigger>0.5) {
                 gear.setPower(1);
             } else {
+                gear.setPower(0);
                 gear.setPower(0);
             }
             if (gamepad2.right_trigger > 0.5) {
