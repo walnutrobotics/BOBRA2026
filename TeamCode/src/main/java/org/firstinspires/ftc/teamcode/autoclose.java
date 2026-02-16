@@ -23,7 +23,7 @@ public class autoclose extends LinearOpMode {
 
         if (opModeIsActive()) {
             backward(1000);
-            sleep(1000);
+            sleep(1001);
             stopDrive();
             launch(1500);
         }
