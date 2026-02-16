@@ -22,8 +22,8 @@ public class autoclose extends LinearOpMode {
         waitForStart();
 
         if (opModeIsActive()) {
-            backward(1000);
-            sleep(1001);
+            backward(700);
+            sleep(500);
             stopDrive();
             launch(1500);
         }
